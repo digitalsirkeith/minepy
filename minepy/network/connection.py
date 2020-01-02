@@ -4,7 +4,7 @@ Connection Class
 
 import socket
 from minepy.logger import logger
-from minepy.network import packet
+from config import protocol
 
 class Connection:
     def __init__(self, address, port=25565, auth_token=None, username=None):
@@ -22,5 +22,5 @@ class Connection:
             logger.exception('Connection: Failed to connect')
         
     def start_handshake(self):
-        packet = packet.Packet(0x00, )
+        login_packet = protocol.handshake.login()
         

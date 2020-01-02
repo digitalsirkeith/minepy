@@ -12,7 +12,10 @@ class Identifier(Type):
         pass
 
 class VarInt(Type):
-    def __init__(self):
+    def __init__(self, value: int):
+        """
+        TODO: create ByteArray from data
+        """
         pass
 
 class VarLong(Type):
@@ -44,5 +47,8 @@ class UUID(Type):
         pass
 
 class ByteArray(Type):
-    def __init__(self):
+    def __init__(self, data):
+        """
+        TODO: create ByteArray from data
+        """
         pass
