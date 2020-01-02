@@ -1,0 +1,3 @@
+from logging import WARNING, DEBUG, INFO, ERROR
+
+LOGGING_LEVEL   = WARNING
