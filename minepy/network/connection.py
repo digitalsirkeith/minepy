@@ -15,12 +15,26 @@ class Connection:
         self.username               = username
         self.compression_enabled    = False
     
-    def connect(self)
+    def connect(self):
         try:
             self.socket.connect((self.address, self.port))
         except:
             logger.exception('Connection: Failed to connect')
+            return
+
+        try: 
+            self.start_login()
+        except:
+            return
         
-    def start_handshake(self):
-        login_packet = protocol.handshake.login()
+    def start_login(self):
+        login_packet = protocol.packet.serverbound.handshake.login.with_host(addr=self.address, port=self.port)
+        self.send_packet(login_packet)
         
+    def send_packet(self, packet: protocol.packet.Packet):
+        """
+        TODO: Encode the packet and send over the socket
+        """
+        data = packet.encode(compression_enabled=self.compression_enabled)
+        self.socket.send(data)
+        pass

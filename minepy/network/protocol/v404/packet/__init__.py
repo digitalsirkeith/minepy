@@ -14,7 +14,7 @@ class Packet:
         self.id     = id
         self.data   = data
 
-    def encode(self, compression_enabled: bool=False):
+    def encode(self, compression_enabled: bool=False) -> bytes:
         """
         TODO. Transforms the class into a byte stream ready for transmission. Encoding depends on compression
         """

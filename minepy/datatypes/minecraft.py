@@ -14,7 +14,7 @@ class Identifier(Type):
 class VarInt(Type):
     def __init__(self, value: int):
         """
-        TODO: create ByteArray from data
+        TODO: create ByteArray from value
         """
         pass
 
