@@ -43,6 +43,6 @@ class UUID(Type):
     def __init__(self):
         pass
 
-class Array(Type):
+class ByteArray(Type):
     def __init__(self):
         pass
