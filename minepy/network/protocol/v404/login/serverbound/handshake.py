@@ -3,8 +3,8 @@ Handshake packets
 """
 
 from minepy.datatypes.minecraft import VarInt, ByteArray
-from ....packet import Packet
-from .... import version
+from ... import Packet
+from ... import version
 
 class HandshakePacket(Packet):
     """
