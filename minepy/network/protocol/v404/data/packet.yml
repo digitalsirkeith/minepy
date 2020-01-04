@@ -1,0 +1,17 @@
+login:
+  handshake:
+    id: 0x00
+    next_state: 1
+  start:
+    id: 0x00
+  encryption:
+    id: 0x01
+  compression:
+    id: 0x03
+  success:
+    id: 0x02
+  plugin:
+    id: 0x04
+status:
+  id: 0x00
+  next_state: 2

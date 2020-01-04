@@ -4,8 +4,9 @@ Packet Base Class
 
 version = 404
 from minepy.datatypes import minecraft
+from abc import ABC, abstractmethod
 
-class Packet:
+class Packet(ABC):
     """
     Packet Class
     Basic unit of communication for the minecraft protocol.
@@ -19,7 +20,12 @@ class Packet:
         """
         TODO. Transforms the class into a byte stream ready for transmission. Encoding depends on compression
         """
+        self.encode_to_data()
         return None
+
+    @abstractmethod
+    def encode_to_data(self):
+        pass
     
     @classmethod
     def decode(cls, raw_data):

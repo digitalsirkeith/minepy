@@ -5,17 +5,18 @@ Handshake packets
 from minepy.datatypes.minecraft import VarInt, ByteArray
 from ... import Packet
 from ... import version
+from ... import data
 
 class HandshakePacket(Packet):
     """
     Handshake Packet
     A clientbound packet for initiating connections
     """
-    def __init__(self, next_state: int):
-        super().__init__(id=VarInt(0x00), data=ByteArray(None))
+    def __init__(self, address: str='', port: int=25565, next_state: int=data.packet['login']['handshake']['id']):
+        super().__init__(id=VarInt(data.packet['login']['handshake']['id']), data=ByteArray(None))
         self.protocol_version   = version
-        self.addr               = ''
-        self.port               = 0
+        self.address            = address
+        self.port               = port
         self.next_state         = next_state
 
     def encode_to_data(self):
@@ -24,13 +25,10 @@ class HandshakePacket(Packet):
         """
         pass
 
-    def with_host(self, addr: str='', port: int=0, next_state: int=0):
-        """
-        TODO: set values for addr, port
-        """
-        self.encode_to_data()
-        
-        return self
+class StatusPacket(HandshakePacket):
+    """
+    Status Packet
+    """
 
-login = HandshakePacket(1)
-status = HandshakePacket(2)
+    def __init__(self, address: str='', port: int=25565):
+        super().__init__(address=address, port=port, next_state=data.state['status'])
